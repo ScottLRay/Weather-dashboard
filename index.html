@@ -1,12 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets\css\style.css" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+          <h1 class="display-5">Find out the weather in your area</h1>
+          <p class="lead">
+            type any city in the world and find out the current weather and the
+            next 7 days to plan your trip and maybe your next BBQ!!
+          </p>
+          <p id="currentDay" class="lead"></p>
+        </div>
+      </div>
+      <div class="input-group mb-3 w-50 p-3">
+        <input
+          id="city-input"
+          type="text"
+          class="form-control"
+          placeholder="City"
+          aria-label="City"
+          aria-describedby="button-addon2"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="weather-button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row mr-0">
+          <div class="col-12 border border-dark m-3 rounded">
+            <div class="row">
+              <div class="col-12">
+                <span id="city-name" class="city-name align-middle"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p id="temperature"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p id="humidity"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p id="wind-speed"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex">
+                <p id="UV-index"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h3>5-Day Forecast</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col forecast bg-primary text-white ml-3 mb-3 rounded"
+          ></div>
+          <div
+            class="col forecast bg-primary text-white ml-3 mb-3 rounded"
+          ></div>
+          <div
+            class="col forecast bg-primary text-white ml-3 mb-3 rounded"
+          ></div>
+          <div
+            class="col forecast bg-primary text-white ml-3 mb-3 rounded"
+          ></div>
+          <div
+            class="col forecast bg-primary text-white ml-3 mb-3 rounded"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets\js\script.js"></script>
+  </body>
 </html>

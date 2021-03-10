@@ -1,6 +1,10 @@
 # Weather-dashboard
+building a weather dashboard to check the weather for a 5-day forecast 
 
-
+## Used Tech.
+bootstrap 
+jquery
+moment
 
 ## User Story
 
@@ -25,3 +29,11 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
+
+## API links
+one call link
+https://openweathermap.org/api/one-call-api
+current weather
+https://openweathermap.org/current
+5-day weather 
+https://openweathermap.org/forecast5
