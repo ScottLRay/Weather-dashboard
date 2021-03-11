@@ -17,17 +17,23 @@ function getWeather(city) {
     .then((data) => data.json())
     .then(function (weather) {
       console.log(weather);
+      //converting kelvin into fer.
       var tempKelvin = weather.main.temp;
       var tempF = Math.floor(1.8 * (tempKelvin - 273.15) + 32) + " degrees";
-      nameEl.innerHTML =  "City: " + weather.name;
+      var iconCode =
+        "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
+
+      //taking the info from the data and displaying it on to the html
+      nameEl.innerHTML = "City: " + weather.name + "<img src=" + iconCode + ">";
       currentTempEl.innerHTML = "Temperature: " + tempF;
       currentHumidityEl.innerHTML = "Humidity: " + weather.main.humidity + "%";
       currentWindEl.innerHTML = "Wind Speed: " + weather.wind.speed + " MPH";
-
+      // ifstatement showing if enduser did not enter a city in right
       if (weather.cod === "404") {
         alert("city not found");
         return;
       }
+      //pulling info from data to use in the next call
       var lon = weather.coord.lon;
       var lat = weather.coord.lat;
 
@@ -36,11 +42,12 @@ function getWeather(city) {
         .then((data) => data.json())
         .then(function (oneCallData) {
           currentUVEl.innerHTML = "UV Index: " + oneCallData.current.uvi;
-
-          // console.log(oneCallData);
+          //want to convert the brute force in something that looking nicer code wise
+          // how to pull three different info from an arry
+          console.log(oneCallData);
           // for (let i = 0; i < oneCallData.daily[i].length; i++) {
           //   const element = oneCallData.daily[i];
-            
+
           // }
           var forecast1 = document.querySelector(".forecast1");
           forecast1.textContent = oneCallData.daily[1].temp.max;
@@ -87,7 +94,7 @@ $("#weather-button").on("click", function (e) {
   console.log(cityInput);
   getWeather(cityInput);
   save();
-  renderSavedSearch()
+  renderSavedSearch();
 });
 
 userSearch = localStorage.getItem("Search History");
@@ -98,34 +105,44 @@ if (userSearch) {
 }
 
 //rendering the buttons from save
-function renderSavedSearch(){
-  var savebtn= document.querySelector(".save-search-container")
-  savebtn.innerHTML=""
-
+function renderSavedSearch() {
+  var savebtn = document.querySelector(".save-search-container");
+  savebtn.innerHTML = "";
+  //for loop. looping for the save searched citys and displaying them to the enduser
   for (let i = 0; i < userSearch.length; i++) {
     var city = userSearch[i];
-    // creat Element in button form 
+    // creat Element in button form
     var cityBtn = document.createElement("button");
-    
-    // add classes to turn in to buttons to press to rerun search
-    cityBtn.classList.add("btn", "btn-outline-secondary", "btn-sm")
+
+    // add classes to turn in to buttons
+    cityBtn.classList.add("btn", "btn-outline-secondary", "btn-sm", "saved");
 
     //name of the buttons will but the city that enduser already search for
-    cityBtn.textContent = city
-    
-      savebtn.append(cityBtn)
-    
+    cityBtn.textContent = city;
+
+    //want to click the save city buttons to re run them in the search
+    //click event listener
+   cityBtn.addEventListener("click", function (e) {
+      // target the cityName from that button: use event... or use this
+     
+      //console.log("target:", e.target.textContent)
+      //call the getWeather function with the city from whatever button you clicked
+      getWeather(e.target.textContent);
+    });
+
+    savebtn.append(cityBtn);
   }
 }
 
 //local save
 var save = function () {
+  //grabing the endusers input
   var search = $form.value;
+  //useing .push to push the city into an arry
   userSearch.push(search);
+  //setting the city from enduser and calling the key "search history" and setting the value as an json string of usersearch
   localStorage.setItem("Search History", JSON.stringify(userSearch));
 
   $form.value = "";
   return userSearch;
 };
-
-
