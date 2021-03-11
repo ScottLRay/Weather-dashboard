@@ -32,8 +32,11 @@ THEN I am again presented with current and future conditions for that city
 
 ## API links
 one call link
+
 https://openweathermap.org/api/one-call-api
+
 current weather
+
 https://openweathermap.org/current
-5-day weather 
-https://openweathermap.org/forecast5
+
+
