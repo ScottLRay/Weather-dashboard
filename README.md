@@ -39,4 +39,6 @@ current weather
 
 https://openweathermap.org/current
 
+## Github Pages deploy page
+https://scottlray.github.io/Weather-dashboard/
 

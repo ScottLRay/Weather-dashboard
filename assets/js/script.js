@@ -19,7 +19,7 @@ function getWeather(city) {
       console.log(weather);
       var tempKelvin = weather.main.temp;
       var tempF = Math.floor(1.8 * (tempKelvin - 273.15) + 32) + " degrees";
-      // nameEl.innerHTML = weather.data.name;
+      nameEl.innerHTML =  "City: " + weather.name;
       currentTempEl.innerHTML = "Temperature: " + tempF;
       currentHumidityEl.innerHTML = "Humidity: " + weather.main.humidity + "%";
       currentWindEl.innerHTML = "Wind Speed: " + weather.wind.speed + " MPH";
@@ -37,9 +37,9 @@ function getWeather(city) {
         .then(function (oneCallData) {
           currentUVEl.innerHTML = "UV Index: " + oneCallData.current.uvi;
 
-          console.log(oneCallData);
-          // for (let i = 0; i < array.length; i++) {
-          //   const element = array[i];
+          // console.log(oneCallData);
+          // for (let i = 0; i < oneCallData.daily[i].length; i++) {
+          //   const element = oneCallData.daily[i];
             
           // }
           var forecast1 = document.querySelector(".forecast1");
@@ -107,7 +107,7 @@ function renderSavedSearch(){
     // creat Element in button form 
     var cityBtn = document.createElement("button");
     
-    //.addClass(btn btn-outline-secondary btn-sm) add classes to turn in to buttons to press to rerun search
+    // add classes to turn in to buttons to press to rerun search
     cityBtn.classList.add("btn", "btn-outline-secondary", "btn-sm")
 
     //name of the buttons will but the city that enduser already search for
