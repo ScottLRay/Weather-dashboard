@@ -38,7 +38,10 @@ function getWeather(city) {
           currentUVEl.innerHTML = "UV Index: " + oneCallData.current.uvi;
 
           console.log(oneCallData);
-
+          // for (let i = 0; i < array.length; i++) {
+          //   const element = array[i];
+            
+          // }
           var forecast1 = document.querySelector(".forecast1");
           forecast1.textContent = oneCallData.daily[1].temp.max;
           var humid1 = document.querySelector(".humidity1");
@@ -84,6 +87,7 @@ $("#weather-button").on("click", function (e) {
   console.log(cityInput);
   getWeather(cityInput);
   save();
+  renderSavedSearch()
 });
 
 userSearch = localStorage.getItem("Search History");
@@ -96,18 +100,20 @@ if (userSearch) {
 //rendering the buttons from save
 function renderSavedSearch(){
   var savebtn= document.querySelector(".save-search-container")
+  savebtn.innerHTML=""
+
   for (let i = 0; i < userSearch.length; i++) {
     var city = userSearch[i];
     // creat Element in button form 
     var cityBtn = document.createElement("button");
     
     //.addClass(btn btn-outline-secondary btn-sm) add classes to turn in to buttons to press to rerun search
-    
+    cityBtn.classList.add("btn", "btn-outline-secondary", "btn-sm")
 
     //name of the buttons will but the city that enduser already search for
-    cityBtn.textContent = userSearch[i]
-    //
-     
+    cityBtn.textContent = city
+    
+      savebtn.append(cityBtn)
     
   }
 }
