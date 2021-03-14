@@ -12,7 +12,7 @@ const forcastEl = document.querySelectorAll("#forecast");
 const $form = document.querySelector(".form-control");
 
 function getWeather(city) {
-  var currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
+  var currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
   fetch(currentWeatherUrl)
     .then((data) => data.json())
     .then(function (weather) {
@@ -21,7 +21,7 @@ function getWeather(city) {
       var tempKelvin = weather.main.temp;
       var tempF = Math.floor(1.8 * (tempKelvin - 273.15) + 32) + " degrees";
       var iconCode =
-        "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
+        "https://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
 
       //taking the info from the data and displaying it on to the html
       nameEl.innerHTML = "City: " + weather.name + "<img src=" + iconCode + ">";
